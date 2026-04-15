@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import QRCode from "react-qr-code";
 
 import logoUt from "../assets/logo-ut-black.png";
