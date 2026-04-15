@@ -7,12 +7,6 @@ type Props = {
 };
 
 export default function CommentCard({ name, message, isNew }: Props) {
-  const initials = name
-    .split(" ")
-    .map((n) => n[0])
-    .join("")
-    .substring(0, 2);
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}

@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import QRCode from "react-qr-code";
 
 import logoUt from "../assets/logo-ut-black.png";
-import line from "../assets/linegradient.png";
 
 const FORM_LINK = "https://forms.office.com/r/wutTs0KZfC?origin=lprLink";
 
