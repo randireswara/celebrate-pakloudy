@@ -22,16 +22,12 @@ export default function CommentCard({ name, message, isNew }: Props) {
       ${isNew ? "bg-yellow-900/40 border border-yellow-400" : "bg-white"}`}
     >
       <div className="flex items-center gap-2 sm:gap-3">
-        <div className="w-8 sm:w-10 h-8 sm:h-10 bg-yellow-400 text-black rounded-full flex items-center justify-center font-bold text-xs sm:text-sm flex-shrink-0">
-          {initials}
-        </div>
-
-        <div className="font-semibold text-red-700 text-sm sm:text-base truncate">
+        <div className="font-semibold text-[20px] truncate text-[#B07600]">
           {name}
         </div>
       </div>
 
-      <div className="text-black font-semibold mt-2 text-xs sm:text-base leading-relaxed">
+      <div className="text-black font-semibold mt-2 text-[20px] leading-relaxed">
         {message}
       </div>
     </motion.div>

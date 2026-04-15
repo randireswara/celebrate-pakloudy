@@ -9,6 +9,7 @@ interface LivePanelProps {
 export default function LivePanel({ triggerReaction }: LivePanelProps) {
   const [messages, setMessages] = useState<any[]>([]);
   const bottomRef = useRef<HTMLDivElement | null>(null);
+  const [totalMessages, setTotalMessages] = useState(0);
 
   const prevCount = useRef(0);
   const queueRef = useRef<any[]>([]);
@@ -35,6 +36,7 @@ export default function LivePanel({ triggerReaction }: LivePanelProps) {
 
       await delay(400);
     }
+    scrollToBottom();
 
     isProcessing.current = false;
   };
@@ -55,6 +57,7 @@ export default function LivePanel({ triggerReaction }: LivePanelProps) {
 
           prevCount.current = data.total;
         }
+        setTotalMessages(data.total);
       } catch (err) {
         console.error("Polling error:", err);
       }
@@ -64,10 +67,10 @@ export default function LivePanel({ triggerReaction }: LivePanelProps) {
   }, []);
 
   return (
-    <div className="relative z-10 h-full w-full bg-transparent flex flex-col rounded-xl border-4 border-white">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-4 sm:mb-6 p-4 sm:p-6">
-        <h2 className="text-black text-lg sm:text-2xl font-bold">
-          Live Appreciation
+    <div className="relative z-10 h-full w-full bg-transparent flex flex-col rounded-xl border-4 border-white backdrop-blur-3xl">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-4 sm:mb-6 p-4 sm:p-6 backdrop-blur-3xl">
+        <h2 className="text-gray-900 text-lg sm:text-3xl font-bold">
+          Say something to him
         </h2>
 
         <button className="relative flex items-center gap-2 px-4 py-2 rounded-full bg-red-600 text-white font-semibold shadow-lg shadow-red-500/40 overflow-hidden mr-3">
@@ -79,11 +82,30 @@ export default function LivePanel({ triggerReaction }: LivePanelProps) {
           LIVE
         </button>
       </div>
-      <div className="flex-1 bg-transparent backdrop-blur-md rounded-2xl overflow-y-auto p-4 sm:pr-6 sm:pl-6 sm:pb-6  ">
+      <div className="flex-1 backdrop-blur-3xl overflow-y-auto p-4 sm:pr-6 sm:pl-6 sm:pb-6  ">
         {messages.map((m, i) => {
           return <CommentCard key={i} name={m.Name} message={m.Message} />;
         })}
         <div ref={bottomRef}></div>
+      </div>
+      <div className="p-6 backdrop-blur-3xl">
+        <div className="bg-gray-700 text-white px-5 py-3 rounded-xl flex items-center gap-3 w-full p-6">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-5 h-5 opacity-80"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M2 3h20v14H6l-4 4V3z" />
+          </svg>
+
+          <p className="text-lg">
+            <span className="font-semibold">
+              {totalMessages.toLocaleString()}
+            </span>
+            <span className="opacity-80"> Messages Sent</span>
+          </p>
+        </div>
       </div>
     </div>
   );

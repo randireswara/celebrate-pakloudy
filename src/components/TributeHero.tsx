@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import QRCode from "react-qr-code";
 
 import logoUt from "../assets/logo-ut-black.png";
+import line from "../assets/linegradient.png";
 
 const FORM_LINK = "https://forms.office.com/r/wutTs0KZfC?origin=lprLink";
 
@@ -214,8 +215,12 @@ export default function TributeHero() {
           alt="United Tractors"
         />
 
+        <p className="text-black text-[28px] font-inter leading-[1.5] max-w-md mb-3 font-regular">
+          The Journey of
+        </p>
+
         <h1 className="text-black text-[96px] leading-[1.0] mb-2 font-prata">
-          Pak Loudy
+          Loudy
         </h1>
         <h1 className="text-black text-[96px] leading-[1.0] mb-2 font-prata">
           Irwanto
@@ -224,46 +229,16 @@ export default function TributeHero() {
           Ellias
         </h1>
 
-        <p className="text-black text-[28px] font-inter leading-[1.5] max-w-md mb-3 font-light">
-          The Journey of Loudy Irwanto <br />
-          Ellias Say Something for Him
-        </p>
-
         <div
-          className="gold-divider-shimmer mb-6 lg:mb-8 rounded-full w-[50%]"
+          className="mb-6 lg:mb-8 rounded-full w-[50%] bg-gradient-to-r from-transparent via-black to-transparent blur-[1px] opacity-70 "
           style={{ height: 2 }}
         />
-        <div
-          className="h-[30%] gold-glow-card relative flex flex-col items-center justify-center gap-4 sm:gap-6 rounded-lg sm:rounded-2xl p-3 sm:p-5 overflow-hidden"
-          style={{
-            background: "rgba(212,160,23,0.06)",
-            border: "1px solid rgba(212,160,23,0.3)",
-            maxWidth: 400,
-          }}
-        >
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                "linear-gradient(105deg, transparent 30%, rgba(255,240,150,0.06) 50%, transparent 70%)",
-              backgroundSize: "200% 100%",
-              animation: "dividerShimmer 4s linear infinite",
-            }}
-          />
-          <div className="bg-white p-2 sm:p-3 rounded-lg sm:rounded-xl flex-shrink-0 relative z-10">
-            <QRCode value={FORM_LINK} size={200} />
-          </div>
-          {/* <div className="relative z-10 text-center sm:text-left">
-            <p className="gold-shimmer-subtle text-[10px] sm:text-xs font-semibold tracking-wider uppercase mb-1">
-              Scan QR untuk
-            </p>
-            <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
-              mengirim pesan apresiasi
-            </p>
-            <p className="text-[8px] sm:text-[10px] text-gray-600 mt-1.5 sm:mt-2 leading-relaxed break-all">
-              {FORM_LINK}
-            </p>
-          </div> */}
+
+        <div className="bg-transparent backdrop-blur-md p-2 sm:p-3 rounded-lg sm:rounded-xl flex-shrink-0  w-fit relative z-10 flex flex-col justify-center items-center border-4 border-white shadow-lg shadow-black-400/30">
+          <QRCode value={FORM_LINK} size={200} />
+          <p className="font-inter text-center text-black text-[20px] font-semibold tracking-wider mb-1 mt-2">
+            Kirim pesan dan <br /> kesan disini!
+          </p>
         </div>
       </div>
     </div>
