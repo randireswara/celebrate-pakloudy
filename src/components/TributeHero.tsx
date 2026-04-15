@@ -150,26 +150,7 @@ const PARTICLES = [
   { top: "85%", left: "20%", dur: "2.6s", delay: "-0.9s" },
 ];
 
-function AnimCounter({ target }: { target: number }) {
-  const [val, setVal] = useState(0);
-  useEffect(() => {
-    let start = 0;
-    const step = Math.ceil(target / 30);
-    const t = setInterval(() => {
-      start = Math.min(start + step, target);
-      setVal(start);
-      if (start >= target) clearInterval(t);
-    }, 40);
-    return () => clearInterval(t);
-  }, [target]);
-  return <>{val.toLocaleString()}</>;
-}
-
-export default function TributeHero({
-  messageCount,
-}: {
-  messageCount: number;
-}) {
+export default function TributeHero() {
   const styleRef = useRef<HTMLStyleElement | null>(null);
 
   useEffect(() => {

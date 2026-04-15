@@ -1,18 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import CommentCard from "./CommentCard";
-import { getMessages, Message } from "../services/sharepointApi";
+import { getMessages } from "../services/sharepointApi";
 
 interface LivePanelProps {
   triggerReaction: () => void;
-  onTotalChange: (total: number) => void;
-  total: number;
 }
 
-export default function LivePanel({
-  triggerReaction,
-  onTotalChange,
-  total,
-}: LivePanelProps) {
+export default function LivePanel({ triggerReaction }: LivePanelProps) {
   const [messages, setMessages] = useState<any[]>([]);
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
@@ -24,11 +18,9 @@ export default function LivePanel({
     bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   };
 
-  // ✅ delay helper (biar bisa await)
   const delay = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
 
-  // ✅ process queue (ANTI RACE CONDITION)
   const processQueue = async () => {
     if (isProcessing.current) return;
 
