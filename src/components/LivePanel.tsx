@@ -61,7 +61,7 @@ export default function LivePanel({ triggerReaction }: LivePanelProps) {
       } catch (err) {
         console.error("Polling error:", err);
       }
-    }, 5000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, []);

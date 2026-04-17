@@ -44,7 +44,8 @@ export async function getMessages(): Promise<MessageResponse> {
     const dummy = [
       {
         Name: 'Andi Ridwan',
-        Message: 'Terima kasih Pak Lou atas kepemimpinannya.',
+        Message: 'Terima kasih Pak Lou atas kepemimpinannya.', 
+        
       },
       { Name: 'Sari Ningish', Message: 'Inspirasi bagi kami semua.' },
       { Name: 'Bagas Prasetyo', Message: 'Sehat selalu Pak Lou!' },
